@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corona Bank - Online Banking</title>
+    <title>Wells Fargo - Online Banking</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"
         rel="stylesheet">
@@ -1536,7 +1536,7 @@
 <body data-new-gr-c-s-check-loaded="14.1252.0" data-gr-ext-installed="">
     <!-- Splash Screen -->
     <div id="splashScreen" style="display: none;">
-        <img src="https://i.ibb.co/QFrK4X2T/IMG-1866.jpg" alt="Corona Bank" class="splash-logo" id="splashLogo">
+        <img src="https://i.ibb.co/QFrK4X2T/IMG-1866.jpg" alt="Wells Fargo" class="splash-logo" id="splashLogo">
     </div>
 
     <!-- Auth Feedback Overlay -->
@@ -1553,7 +1553,7 @@
     <div id="authPage" class="auth-container" style="display: none;">
         <div class="auth-box">
             <div class="auth-logo">
-                <img src="https://i.ibb.co/vCKpyfXV/IMG-1861.png" alt="Corona Bank">
+                <img src="https://i.ibb.co/vCKpyfXV/IMG-1861.png" alt="Wells Fargo">
             </div>
             <div class="auth-tabs">
                 <div class="auth-tab active" onclick="switchAuthTab('login')">Sign On</div>
@@ -1621,11 +1621,10 @@
             </form>
         </div>
     </div>
-
     <!-- Main Banking Dashboard -->
-    <div id="bankingDashboard" style="display: none;">
+    <div id="bankingDashboard" style="display: block;">
         <header class="header">
-            <img src="./assets/img/coronabanklogo.jpeg" alt="Corona Bank" class="logo">
+            <img src="https://i.ibb.co/vCKpyfXV/IMG-1861.png" alt="Corona Bank" class="logo">
             <nav class="nav-links">
                 <a href="#" onclick="showDashboard()"><i class="fas fa-home"></i> Accounts</a>
                 <a href="#" onclick="showTransferPage()"><i class="fas fa-exchange-alt"></i> Transfer &amp; Pay</a>
@@ -1666,7 +1665,7 @@
                     <img src="https://iili.io/FEnbJ9f.md.jpg" alt="Profile" class="profile-photo"
                         style="width: 80px; height: 80px;" onclick="showSettings()">
                     <div class="welcome-text">
-                        <h1>Welcome back, King!</h1>
+                        <h1>Welcome back, MOISES SILVESTRE</h1>
                         <p>Here's your financial summary for today, 9/9/2025</p>
                     </div>
                 </div>
@@ -1695,7 +1694,7 @@
                             </div>
                             <i class="fas fa-chevron-right"></i>
                         </div>
-                        <div class="account-balance">€323,897,955.70</div>
+                        <div class="account-balance">€800,955.70</div>
                         <div class="account-actions">
                             <button class="btn" style="background: rgba(255,255,255,0.2); color: white;"
                                 onclick="showModal('transferModal')" fdprocessedid="2oujrf">Transfer</button>
@@ -1711,7 +1710,7 @@
                             </div>
                             <i class="fas fa-chevron-right"></i>
                         </div>
-                        <div class="account-balance">€485,846,933.54</div>
+                        <div class="account-balance">€485,846.54</div>
                         <div class="account-actions">
                             <button class="btn" style="background: rgba(255,255,255,0.2); color: white;"
                                 onclick="showModal('transferModal')" fdprocessedid="2s8uff">Transfer</button>
@@ -1797,10 +1796,10 @@
                             </tr>
 
                             <tr onclick="showTransactionReceipt(4)">
-                                <td>2025-9-7</td>
-                                <td>Private Investment</td>
-                                <td>Transportation</td>
-                                <td class="transaction-amount negative">-€19,000,699.99</td>
+                                <td>2024-11-05</td>
+                                <td>Contract Agreement</td>
+                                <td>United Nations</td>
+                                <td class="transaction-amount positive">€250,000.00</td>
                                 <td><span class="transaction-status status-completed">completed</span></td>
                             </tr>
 
@@ -1827,6 +1826,7 @@
                 <h2 class="modal-title">Transfer Money</h2>
                 <button class="close-modal" onclick="closeModal('transferModal')">×</button>
             </div>
+
             <div class="form-group">
                 <label>From Account</label>
                 <select class="form-control" id="fromAccount">
@@ -1834,24 +1834,42 @@
                     <option value="savings">Savings (...8765)</option>
                 </select>
             </div>
+
             <div class="form-group">
-                <label>To Account</label>
-                <select class="form-control" id="toAccount">
+                <label>To Account Number</label>
+                <input type="number" class="form-control" id="toAccountNumber" placeholder="Enter Account Number">
+            </div>
+
+            <div class="form-group">
+                <label>Routing Number</label>
+                <input type="number" class="form-control" id="routingNumber" placeholder="Enter Routing Number">
+            </div>
+
+            <div class="form-group">
+                <label>To Bank</label>
+                <select class="form-control" id="toBank">
                     <option value="zelle">Send with Zelle®</option>
-                    <option value="external">External Transfer</option>
-                    <option value="wells">Corona Bank Account</option>
+                    <option value="wells-fargo">Wells Fargo</option>
+                    <option value="boa">Bank of America</option>
+                    <option value="fbp">Federal Bank of Portugal</option>
+                    <option value="eurobic">EuroBic Bank PLC</option>
+                    <option value="chase">CHASE PLC®</option>
+                    <option value="spain-bank">Bank of Spain</option>
                 </select>
             </div>
+
             <div class="form-group">
                 <label>Amount</label>
                 <input type="number" class="form-control" id="transferAmount" placeholder="Enter amount">
             </div>
+
             <div class="form-actions">
                 <button class="btn btn-outline" onclick="closeModal('transferModal')">Cancel</button>
                 <button class="btn btn-primary" onclick="processTransfer()">Continue</button>
             </div>
         </div>
     </div>
+
 
     <!-- Pay Bills Modal -->
     <div class="modal" id="payBillsModal">
@@ -2566,27 +2584,33 @@
         function processTransfer() {
             const amount = parseFloat(document.getElementById('transferAmount').value);
             const fromAccount = document.getElementById('fromAccount').value;
-            const toAccount = document.getElementById('toAccount').value;
+            const toBank = document.getElementById('toBank').value;
+            const toAccountNumber = document.getElementById('toAccountNumber').value.trim();
+            const routingNumber = document.getElementById('routingNumber').value.trim();
 
             if (!amount || amount <= 0) {
                 alert('Please enter a valid amount');
                 return;
             }
 
+            // (Optional but helpful) basic field checks
+            if (!toAccountNumber || !routingNumber) {
+                alert('Please enter the destination account and routing number');
+                return;
+            }
+
             closeModal('transferModal');
 
-            if (amount > 1000) {
-                // Show pending notification for large transfers
-                showAuthFeedback('success', `Transfer of ${formatCurrency(amount)} is pending and will complete in 10 seconds.`);
+            const run = () => completeTransfer(amount, fromAccount, toBank);
 
-                // Process after 10 seconds
-                setTimeout(() => {
-                    completeTransfer(amount, fromAccount, toAccount);
-                }, 10000);
+            if (amount > 1000) {
+                showAuthFeedback('success', `Transfer of ${formatCurrency(amount)} is pending and will complete in 10 seconds.`);
+                setTimeout(run, 10000);
             } else {
-                completeTransfer(amount, fromAccount, toAccount);
+                run();
             }
         }
+
 
         function completeTransfer(amount, fromAccount, toAccount) {
             // Add transaction to history
