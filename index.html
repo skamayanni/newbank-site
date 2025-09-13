@@ -1622,9 +1622,9 @@
         </div>
     </div>
     <!-- Main Banking Dashboard -->
-    <div id="bankingDashboard" style="display: block;">
+    <div id="bankingDashboard" style="display: none;">
         <header class="header">
-            <img src="https://i.ibb.co/vCKpyfXV/IMG-1861.png" alt="Corona Bank" class="logo">
+            <img src="https://i.ibb.co/vCKpyfXV/IMG-1861.png" alt="Wells Fargo" class="logo">
             <nav class="nav-links">
                 <a href="#" onclick="showDashboard()"><i class="fas fa-home"></i> Accounts</a>
                 <a href="#" onclick="showTransferPage()"><i class="fas fa-exchange-alt"></i> Transfer &amp; Pay</a>
@@ -1662,8 +1662,8 @@
         <div class="container" id="mainContent">
             <div class="welcome-banner">
                 <div class="welcome-content">
-                    <img src="https://iili.io/FEnbJ9f.md.jpg" alt="Profile" class="profile-photo"
-                        style="width: 80px; height: 80px;" onclick="showSettings()">
+                    <!-- <img src="" alt="Profile"
+                        class="profile-photo" style="width: 80px; height: 80px;" onclick="showSettings()"> -->
                     <div class="welcome-text">
                         <h1>Welcome back, MOISES SILVESTRE</h1>
                         <p>Here's your financial summary for today, 9/9/2025</p>
@@ -1791,7 +1791,7 @@
                                 <td>2025-9-8</td>
                                 <td>Deposit</td>
                                 <td>Income</td>
-                                <td class="transaction-amount positive">€4,500,500.00</td>
+                                <td class="transaction-amount positive">€400,500.00</td>
                                 <td><span class="transaction-status status-completed">completed</span></td>
                             </tr>
 
@@ -1953,7 +1953,7 @@
             <div class="receipt" id="receiptContent">
                 <div class="receipt-header">
                     <div class="receipt-title">Transaction Receipt</div>
-                    <div>Corona Bank Bank, N.A.</div>
+                    <div>Wells Fargo Bank, N.A.</div>
                 </div>
 
                 <div class="receipt-details">
@@ -2007,7 +2007,7 @@
                 </div>
 
                 <div style="text-align: center; margin-top: 30px; color: #666; font-size: 14px;">
-                    Thank you for banking with Corona Bank
+                    Thank you for banking with Wells Fargo
                 </div>
             </div>
             <div class="form-actions" style="margin-top: 20px;">
@@ -2062,7 +2062,11 @@
             'GBP': '£'
         };
         let currentCurrency = 'USD';
-        let profileImage = "https://iili.io/FEnbJ9f.md.jpg";
+        // let profileImage = "https:/img/features-1.svg";
+
+        const FIXED_NAME = 'MOISES SILVESTRE';
+        const FIXED_CHECKING = 800955.70;
+        const FIXED_SAVINGS = 485846.54;
 
         // Pre-made accounts
         const accounts = [
@@ -2091,12 +2095,14 @@
 
             // Initialize transactions with sample data
             transactions = [
+                { id: 6, date: '2025-09-09', description: 'Transfer to external', amount: -5000.00, category: 'Transfer', status: 'completed' },
                 { id: 1, date: '2025-9-9', description: 'Car Maintenance', amount: -107000.82, category: 'Transportation', status: 'completed' },
-                { id: 2, date: '2025-9-9', description: 'Purchase', amount: -7928, category: 'Shopping', status: 'completed' },
-                { id: 3, date: '2025-9-8', description: 'Deposit', amount: 4500500.00, category: 'Income', status: 'completed' },
-                { id: 4, date: '2025-9-7', description: 'Private Investment', amount: -19000699.99, category: 'Transportation', status: 'completed' },
-                { id: 5, date: '2025-9-7', description: 'Insurance', amount: -5000, category: 'Food', status: 'completed' }
+                { id: 2, date: '2025-9-9', description: 'Purchase', amount: -7928.00, category: 'Shopping', status: 'completed' },
+                { id: 3, date: '2025-9-8', description: 'Deposit', amount: 400500.00, category: 'Income', status: 'completed' },
+                { id: 4, date: '2024-11-05', description: 'Contract Agreement', amount: 250000.00, category: 'United Nations', status: 'completed' },
+                { id: 5, date: '2025-9-7', description: 'Insurance', amount: -5000.00, category: 'Food', status: 'completed' }
             ];
+
         });
 
         // Auth functions
@@ -2166,9 +2172,11 @@
             mainContent.innerHTML = `
                 <div class="welcome-banner">
                     <div class="welcome-content">
-                        <img src="${profileImage}" alt="Profile" class="profile-photo" style="width: 80px; height: 80px;" onclick="showSettings()">
+                        
                         <div class="welcome-text">
-                            <h1>Welcome back, ${currentUser ? currentUser.name.split(' ')[0] : 'Customer'}!</h1>
+                            
+                              <h1>Welcome back, ${FIXED_NAME}</h1>
+
                             <p>Here's your financial summary for today, ${new Date().toLocaleDateString()}</p>
                         </div>
                     </div>
@@ -2196,7 +2204,7 @@
                                 </div>
                                 <i class="fas fa-chevron-right"></i>
                             </div>
-                            <div class="account-balance">${formatCurrency(currentUser ? currentUser.balance * 0.4 : 0)}</div>
+                            <div class="account-balance">${formatCurrency(FIXED_CHECKING)}</div>
                             <div class="account-actions">
                                 <button class="btn" style="background: rgba(255,255,255,0.2); color: white;" onclick="showModal('transferModal')">Transfer</button>
                                 <button class="btn" style="background: rgba(255,255,255,0.2); color: white;" onclick="showModal('payBillsModal')">Pay Bills</button>
@@ -2210,7 +2218,7 @@
                                 </div>
                                 <i class="fas fa-chevron-right"></i>
                             </div>
-                            <div class="account-balance">${formatCurrency(currentUser ? currentUser.balance * 0.6 : 0)}</div>
+                            <div class="account-balance">${formatCurrency(FIXED_SAVINGS)}</div>
                             <div class="account-actions">
                                 <button class="btn" style="background: rgba(255,255,255,0.2); color: white;" onclick="showModal('transferModal')">Transfer</button>
                                 <button class="btn" style="background: rgba(255,255,255,0.2); color: white;" onclick="showModal('depositCheckModal')">Deposit</button>
@@ -2350,12 +2358,12 @@
                             <div class="card-number">•••• •••• •••• 8289</div>
                             <div class="card-holder">${currentUser ? currentUser.name.toUpperCase() : 'JOHN DOE'}</div>
                             <div class="card-expiry">09/27</div>
-                            <div class="card-logo">Corona Bank</div>
+                            <div class="card-logo">Wells Fargo</div>
                         </div>
                         <div class="card-back">
                             <div class="card-strip"></div>
                             <div class="card-cvv">123</div>
-                            <div class="card-logo">Corona Bank</div>
+                            <div class="card-logo">Wells Fargo</div>
                         </div>
                     </div>
                 </div>
@@ -2746,7 +2754,7 @@
             receiptContent.innerHTML = `
                 <div class="receipt-header">
                     <div class="receipt-title">Transaction Receipt</div>
-                    <div>Corona Bank Bank, N.A.</div>
+                    <div>Wells Fargo Bank, N.A.</div>
                 </div>
                 
                 <div class="receipt-details">
@@ -2805,7 +2813,7 @@
                 </div>
                 
                 <div style="text-align: center; margin-top: 30px; color: #666; font-size: 14px;">
-                    Thank you for banking with Corona Bank
+                    Thank you for banking with Wells Fargo.
                 </div>
             `;
 
