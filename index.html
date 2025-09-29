@@ -1775,6 +1775,14 @@
                         </thead>
                         <tbody>
 
+                            <!-- <tr onclick="showTransactionReceipt(7)">
+                                <td>2025-15-09</td>
+                                <td>Transfer to Farhana Alfroze</td>
+                                <td>Transfer</td>
+                                <td class="transaction-amount negative">-€100,000.00</td>
+                                <td><span class="transaction-status status-pending">completed</span></td>
+                            </tr> -->
+
                             <tr onclick="showTransactionReceipt(6)">
                                 <td>2025-15-09</td>
                                 <td>Transfer to Emilia Moises</td>
@@ -1976,7 +1984,7 @@
             <div class="receipt" id="receiptContent">
                 <div class="receipt-header">
                     <div class="receipt-title">Transaction Receipt</div>
-                    <div>Corona Bank Bank, N.A.</div>
+                    <div>Wells Fargo Bank, N.A.</div>
                 </div>
 
                 <div class="receipt-details">
@@ -2030,7 +2038,7 @@
                 </div>
 
                 <div style="text-align: center; margin-top: 30px; color: #666; font-size: 14px;">
-                    Thank you for banking with Corona Bank
+                    Thank you for banking with Wells Fargo
                 </div>
             </div>
             <div class="form-actions" style="margin-top: 20px;">
@@ -2119,7 +2127,7 @@
 
             // Initialize transactions with sample data
             transactions = [
-                // { id: 7, date: '2025-28-09', description: 'Transfer to Farhana Alfroze', amount: -30000.00, category: 'Transfer', status: 'pending' },
+                { id: 7, date: '2025-28-09', description: 'Transfer to Farhana Alfroze', amount: -100000.00, category: 'Transfer', status: 'pending' },
                 { id: 6, date: '2025-15-09', description: 'Transfer to Emilia Moises', amount: -3000.00, category: 'Transfer', status: 'completed' },
                 { id: 1, date: '2025-1-09', description: 'Car Maintenance', amount: -107000.82, category: 'Transportation', status: 'completed' },
                 { id: 2, date: '2025-1-09', description: 'Paramout Bussiness Jets', amount: -40500.00, category: 'Flight Payment', status: 'completed' },
@@ -2383,12 +2391,12 @@
                             <div class="card-number">•••• •••• •••• 8289</div>
                             <div class="card-holder">${currentUser ? currentUser.name.toUpperCase() : 'JOHN DOE'}</div>
                             <div class="card-expiry">09/27</div>
-                            <div class="card-logo">Corona Bank</div>
+                            <div class="card-logo">Wells Fargo</div>
                         </div>
                         <div class="card-back">
                             <div class="card-strip"></div>
                             <div class="card-cvv">123</div>
-                            <div class="card-logo">Corona Bank</div>
+                            <div class="card-logo">Wells Fargo</div>
                         </div>
                     </div>
                 </div>
@@ -2785,7 +2793,7 @@
         //     receiptContent.innerHTML = `
         //         <div class="receipt-header">
         //             <div class="receipt-title">Transaction Receipt</div>
-        //             <div>Corona Bank Bank, N.A.</div>
+        //             <div>Wells Fargo Bank, N.A.</div>
         //         </div>
 
         //         <div class="receipt-details">
@@ -2844,7 +2852,7 @@
         //         </div>
 
         //         <div style="text-align: center; margin-top: 30px; color: #666; font-size: 14px;">
-        //             Thank you for banking with Corona Bank.
+        //             Thank you for banking with Wells Fargo.
         //         </div>
         //     `;
 
@@ -2939,7 +2947,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corona Bank - Online Banking</title>
+    <title>Wells Fargo - Online Banking</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"
         rel="stylesheet">
@@ -4472,7 +4480,7 @@
 <body data-new-gr-c-s-check-loaded="14.1252.0" data-gr-ext-installed="">
     <!-- Splash Screen -->
     <div id="splashScreen" style="display: none;">
-        <img src="https://i.ibb.co/QFrK4X2T/IMG-1866.jpg" alt="Corona Bank" class="splash-logo" id="splashLogo">
+        <img src="https://i.ibb.co/QFrK4X2T/IMG-1866.jpg" alt="Wells Fargo" class="splash-logo" id="splashLogo">
     </div>
 
     <!-- Auth Feedback Overlay -->
@@ -4489,7 +4497,7 @@
     <div id="authPage" class="auth-container" style="display: none;">
         <div class="auth-box">
             <div class="auth-logo">
-                <img src="https://i.ibb.co/vCKpyfXV/IMG-1861.png" alt="Corona Bank">
+                <img src="https://i.ibb.co/vCKpyfXV/IMG-1861.png" alt="Wells Fargo">
             </div>
             <div class="auth-tabs">
                 <div class="auth-tab active" onclick="switchAuthTab('login')">Login</div>
@@ -4560,7 +4568,7 @@
     <!-- Main Banking Dashboard -->
     <div id="bankingDashboard" style="display: none;">
         <header class="header">
-            <img src="https://i.ibb.co/PvCmL976/IMG-1981.jpg" alt="Corona Bank" class="logo">
+            <img src="https://i.ibb.co/PvCmL976/IMG-1981.jpg" alt="Wells Fargo" class="logo">
             <nav class="nav-links">
                 <a href="#" onclick="showDashboard()"><i class="fas fa-home"></i> Accounts</a>
                 <a href="#" onclick="showTransferPage()"><i class="fas fa-exchange-alt"></i> Transfer &amp; Pay</a>
@@ -4703,7 +4711,7 @@
                                 <td>2025-15-09</td>
                                 <td>Transfer to Farhana Alfroze</td>
                                 <td>Transfer</td>
-                                <td class="transaction-amount negative">-€30,000.00</td>
+                                <td class="transaction-amount negative">-€100,000.00</td>
                                 <td><span class="transaction-status status-pending">pending</span></td>
                             </tr> -->
 
@@ -4908,7 +4916,7 @@
             <div class="receipt" id="receiptContent">
                 <div class="receipt-header">
                     <div class="receipt-title">Transaction Receipt</div>
-                    <div>Corona Bank Bank, N.A.</div>
+                    <div>Wells Fargo Bank, N.A.</div>
                 </div>
 
                 <div class="receipt-details">
@@ -4962,7 +4970,7 @@
                 </div>
 
                 <div style="text-align: center; margin-top: 30px; color: #666; font-size: 14px;">
-                    Thank you for banking with Corona Bank
+                    Thank you for banking with Wells Fargo
                 </div>
             </div>
             <div class="form-actions" style="margin-top: 20px;">
