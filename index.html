@@ -1533,17 +1533,6 @@
     </style>
 </head>
 
-<!-- Smartsupp Live Chat script -->
-<script type="text/javascript">
-    var _smartsupp = _smartsupp || {};
-    _smartsupp.key = '0948335b22b99e8da9b887dc7629d59e28e11df4';
-    window.smartsupp || (function (d) {
-        var s, c, o = smartsupp = function () { o..push(arguments) }; o.= [];
-        s = d.getElementsByTagName('script')[0]; c = d.createElement('script');
-        c.type = 'text/javascript'; c.charset = 'utf-8'; c.async = true;
-        c.src = 'https://www.smartsuppchat.com/loader.js?'; s.parentNode.insertBefore(c, s);
-    })(document);
-</script>
 
 <body data-new-gr-c-s-check-loaded="14.1252.0" data-gr-ext-installed="">
     <!-- Splash Screen -->
@@ -2925,6 +2914,9 @@
                 showDashboard();
             }
         }
+
+         document.addEventListener("contextmenu", event => event.preventDefault());
+
     </script>
 
     <span id="PING_IFRAME_FORM_DETECTION" style="display: none;"></span>
